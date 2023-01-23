@@ -1,0 +1,86 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Add Student</h5>
+
+      <form #addStudentForm = "ngForm" (submit) = "saveStudent(addStudentForm)">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name*</label>
+            <input
+              name="name"
+              ngModel
+              type="text"
+              class="form-control"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="roll" class="form-label">Roll No*</label>
+            <input
+              name="roll"
+              ngModel
+              type="text"
+              class="form-control"
+              placeholder=""
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+              <label for="branch" class="form-label">Branch*</label>
+              <input
+                name="branch"
+                ngModel
+                type="text"
+                class="form-control"
+                placeholder=""
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="roll" class="form-label">Semester*</label>
+              <input
+                name="sem"
+                ngModel
+                type="text"
+                class="form-control"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email*</label>
+              <input
+                name="email"
+                ngModel
+                type="email"
+                class="form-control"
+                placeholder=""
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone No*</label>
+              <input
+                name="phone"
+                ngModel
+                type="text"
+                class="form-control"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-danger m-2">Clear</button>
+            <button class="btn btn-primary m-2">Submit</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

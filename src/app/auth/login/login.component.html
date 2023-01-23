@@ -10,11 +10,13 @@
                   <input
                     name = "email"
                     ngModel
+                    #email = "ngModel"
                     type="email"
                     class="form-control"
                     placeholder="name@example.com"
                     required
                   />
+                <span class="text-danger" *ngIf = 'email.touched && email.invalid'>Please Enter E-Mail</span>
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label"
@@ -23,11 +25,13 @@
                   <input
                     name = "password"
                     ngModel
+                    #pwd = "ngModel"
                     type="password"
                     class="form-control"
                     placeholder="**********"
                     required
                   />
+                  <span class="text-danger" *ngIf = "pwd.touched && pwd.invalid">Enter your password</span>
                 </div>
       
           </form>

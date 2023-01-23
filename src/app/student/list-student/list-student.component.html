@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title">Students</h5>
+        <button class="btn btn-primary">Add Student</button>
+      </div>
+
+      <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Roll No.</th>
+            <th>Branch</th>
+            <th>Sem</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{ student.name }}</td>
+            <td>{{ student.roll }}</td>
+            <td>{{ student.branch }}</td>
+            <td>{{ student.sem }}</td>
+            <td style="width: 15%">
+              <div class="d-flex justify-content-around">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
