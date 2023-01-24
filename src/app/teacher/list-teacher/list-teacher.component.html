@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title">Teachers</h5>
+          <button class="btn btn-primary">Add Teacher</button>
+        </div>
+  
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>E-Mail</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let teacher of teachers">
+              <td>{{ teacher.name }}</td>
+              <td>{{ teacher.email }}</td>
+              <td>{{ teacher.phone }}</td>
+              <td style="width: 15%">
+                <div class="d-flex justify-content-around">
+                  <button class="btn btn-primary">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
