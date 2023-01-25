@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { TeacherService } from 'src/app/services/teacher.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-teacher',
@@ -6,26 +9,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-teacher.component.css']
 })
 export class ListTeacherComponent {
-  teachers = [
-    {
-      "name": "Sanjay",
-      "email": "teacher@email.com",
-      "phone": "9876543210"
-    },
-    {
-      "name": "Sanjay",
-      "email": "teacher@email.com",
-      "phone": "9876543210"
-    },
-    {
-      "name": "Sanjay",
-      "email": "teacher@email.com",
-      "phone": "9876543210"
-    },
-    {
-      "name": "Sanjay",
-      "email": "teacher@email.com",
-      "phone": "9876543210"
-    }
-  ]
+  constructor(private _router: Router, private _teacherService:TeacherService){}
+  teachers:any[] = [];
+  routeAddTeacher(){
+    this._router.navigateByUrl('teacher/add-teacher')
+  }
+  ngOnInit(){
+    this._teacherService.getTeacher().subscribe((res:any) => {
+      this.teachers = res.teachers;
+    })
+  }
+
+  delete(id:any){
+    this._teacherService.deleteTeacher(id).subscribe((res:any) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: res.message
+      }).then(_ => {
+        this._teacherService.getTeacher().subscribe((res:any) => {
+          this.teachers = res.teachers;
+        })
+      })
+    })
+  }
 }

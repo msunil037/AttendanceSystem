@@ -9,6 +9,64 @@ export class AppComponent implements OnInit {
   constructor(private _router: Router){
 
   }
+  menu:any[] = [
+    {
+      name:'student',
+      title: 'Student',
+      subMenu: [
+        {
+          name: 'listStudent',
+          title: "List Student",
+          url : 'student'
+        },
+        {
+          name: 'addStudent',
+          title: "Add Student",
+          url : 'student/add-student'
+        }
+      ]
+    },
+    {
+      name:'teacher',
+      title: 'Teacher',
+      subMenu: [
+        {
+          name: 'listTeacher',
+          title: "List Teacher",
+          url : 'teacher'
+        },
+        {
+          name: 'addTeacher',
+          title: "Add Teacher",
+          url : 'teacher/add-teacher'
+        }
+      ]
+    },
+    {
+      name:'class',
+      title: 'Class',
+      role: 'teacher',
+      subMenu: [
+        {
+          name: 'listClass',
+          title: "List Class",
+          url : 'class'
+        },
+        {
+          name: 'addClass',
+          title: "Add Class",
+          url : 'class/add-class'
+        }
+      ]
+    }
+  ]
+
+  getRoleValidationStatus(menuItem:any){
+    if(localStorage.getItem('role') === 'admin'){
+      return true;
+    }
+    return localStorage.getItem('role') === menuItem.role;
+  }
   currentURL: string = "";
   ngOnInit(){
     this._router.events.subscribe(res => {

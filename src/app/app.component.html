@@ -18,28 +18,26 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Student
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" routerLink="student">List Student</a>
-              </li>
-              <li>
-                <a class="dropdown-item" routerLink="student/add-student"
-                  >Add Student</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
+          <ng-container *ngFor="let menuItem of menu">
+            <li class="nav-item dropdown" *ngIf="getRoleValidationStatus(menuItem)">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{menuItem.title}}
+              </a>
+              <ul class="dropdown-menu">
+                <li *ngFor = "let submenuItem of menuItem.subMenu">
+                  <a class="dropdown-item" routerLink="{{submenuItem.url}}">{{submenuItem.title}}</a>
+                </li>
+              </ul>
+            </li>
+          </ng-container>
+
+          <!-- <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -80,7 +78,7 @@
                 >
               </li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
