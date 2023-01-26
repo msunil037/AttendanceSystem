@@ -31,25 +31,25 @@
         <div class="row">
             <div class="col-md-6">
               <label for="branch" class="form-label">Branch*</label>
-              <input
-                name="branch"
-                ngModel
-                type="text"
-                class="form-control"
-                placeholder=""
-                required
-              />
+              <select name = "branch" ngModel class="form-select" aria-label="Branch">
+                <option selected value = "">Select a Branch</option>
+                <option value="CSE">CSE</option>
+                <option value="Mechanical">Mechanical</option>
+              </select>
             </div>
             <div class="col-md-6">
               <label for="roll" class="form-label">Semester*</label>
-              <input
-                name="sem"
-                ngModel
-                type="text"
-                class="form-control"
-                placeholder=""
-                required
-              />
+              <select name = "sem" ngModel class="form-select" aria-label="Semester">
+                <option selected value = "">Select a Semester</option>
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+                <option value="5th">5th</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+              </select>
             </div>
           </div>
           <div class="row">

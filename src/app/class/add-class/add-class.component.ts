@@ -8,6 +8,6 @@ import { NgForm } from '@angular/forms';
 })
 export class AddClassComponent {
   saveClass(form:NgForm){
-    console.log(form.valid);
+    console.log(JSON.stringify(form.value));
   }
 }

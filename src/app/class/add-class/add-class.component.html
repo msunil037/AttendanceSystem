@@ -20,7 +20,7 @@
               </div>
               <div class="col-md-6">
                 <label for="semester" class="form-label">Semester*</label>
-                <select class="form-select" aria-label="Semester">
+                <select name="sem" ngModel class="form-select" aria-label="Semester">
                     <option selected value = "">Select a Semester</option>
                     <option value="1">1st</option>
                     <option value="2">2nd</option>
@@ -37,14 +37,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="teacher" class="form-label">Teacher*</label>
-                    <select class="form-select" aria-label="teacher">
+                    <select name="teacher" ngModel class="form-select" aria-label="teacher">
                         <option selected value = "">Select a Teacher</option>
                         <option value="sunil@email.com">Sunil</option>
                       </select>
                   </div>
                   <div class="col-md-6">
                     <label for="teacher" class="form-label">Students*</label>
-                    <select class="form-select" multiple aria-label="teacher">
+                    <select name="students" ngModel class="form-select" multiple aria-label="teacher">
                         <option selected value = "">Select Students</option>
                         <option value="amit@email.com">Amit</option>
                         <option value="sangram@email.com">Sangram</option>

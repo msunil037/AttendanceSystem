@@ -20,6 +20,10 @@ export class ListTeacherComponent {
     })
   }
 
+  edit(id:string){
+    this._router.navigateByUrl("teacher/edit-teacher/" + id)
+  }
+
   delete(id:any){
     this._teacherService.deleteTeacher(id).subscribe((res:any) => {
       Swal.fire({

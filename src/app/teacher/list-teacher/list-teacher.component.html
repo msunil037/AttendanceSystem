@@ -22,7 +22,7 @@
               <td>{{ teacher.phone }}</td>
               <td style="width: 15%">
                 <div class="d-flex justify-content-around">
-                  <button class="btn btn-primary">Edit</button>
+                  <button class="btn btn-primary" (click) = "edit(teacher._id)">Edit</button>
                   <button class="btn btn-danger" (click) = 'delete(teacher._id)'>Delete</button>
                 </div>
               </td>

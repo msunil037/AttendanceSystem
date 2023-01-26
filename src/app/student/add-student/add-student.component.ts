@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { StudentService } from 'src/app/services/student.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-student',
@@ -7,7 +9,17 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-student.component.css']
 })
 export class AddStudentComponent {
+  constructor(private _studentService: StudentService){}
   saveStudent(form:NgForm){
     console.log(form.valid);
+    this._studentService.saveStudent(form.value).subscribe((res: any) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: res.message
+      }).then(_ => {
+          form.resetForm();
+      })
+    })
   }
 }
