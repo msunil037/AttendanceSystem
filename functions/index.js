@@ -2,11 +2,6 @@ const app = require("./app");
 const debug = require("debug")("node-angular");
 const http = require("http");
 
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-
-admin.initializeApp();
-
 const normalizePort = val => {
   var port = parseInt(val, 10);
 
@@ -57,5 +52,3 @@ server.on("listening", onListening);
 server.listen(port);
 
 // console.log(port);
-
-// exports.attendanceSystem = functions.https.onRequest(app);
