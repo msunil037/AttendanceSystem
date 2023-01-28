@@ -3,28 +3,31 @@
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <h5 class="card-title">Classes</h5>
-          <button class="btn btn-primary">Add Class</button>
+          <button class="btn btn-primary" (click) = "routeToAddClass()">Add Class</button>
         </div>
   
         <table class="table table-bordered mt-4">
           <thead>
             <tr>
-              <th>Class Name</th>
-              <th>Semester</th>
-              <th>Teacher</th>
+              <th style="width: 20%;">Class Name</th>
+              <th style="width: 20%;">Semester</th>
+              <th style="width: 20%;">Teacher</th>
+              <th style="width: 30%;">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let class of classes">
               <td>{{ class.className }}</td>
               <td>{{ class.sem }}</td>
-              <td>{{ class.teacher }}</td>
-              <td style="width: 15%">
-                <div class="d-flex justify-content-around">
-                  <button class="btn btn-primary">Edit</button>
-                  <button class="btn btn-danger">Delete</button>
-                </div>
+              <td>{{ class.teacherName }}</td>
+              <td>
+                  <button class="btn btn-primary m-2">Edit</button>
+                  <button class="btn btn-danger m-2">Delete</button>
+                  <button class="btn btn-primary m-2" *ngIf = "isTeacher" (click) = "routeToAttendance(class._id)">Take Attendance</button>
               </td>
+            </tr>
+            <tr class="text-center" *ngIf = "!classes.length">
+              <td colspan="4">No Results Found</td>
             </tr>
           </tbody>
         </table>

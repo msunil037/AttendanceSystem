@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import Swal from 'sweetalert2';
 
@@ -8,9 +9,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./list-student.component.css']
 })
 export class ListStudentComponent {
-  constructor(private _studentService: StudentService){}
+  constructor(private _studentService: StudentService, private _router: Router){}
   students: any[] = []
-
+  routeToAddStudent(){
+    this._router.navigateByUrl("student/add-student");
+  }
   ngOnInit(){
     this._studentService.getStudent().subscribe((res: any) => {
       this.students = res.students;

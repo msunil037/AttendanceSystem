@@ -9,7 +9,23 @@ export class AppComponent implements OnInit {
   constructor(private _router: Router){
 
   }
+  logout(){
+    this._router.navigateByUrl("/");
+    localStorage.clear();
+  }
   menu:any[] = [
+    {
+      name:'report',
+      title: 'Report',
+      role: 'teacher',
+      subMenu: [
+        {
+          name: 'showAttendance',
+          title: "Show Attendance",
+          url : 'report'
+        }
+      ]
+    },
     {
       name:'student',
       title: 'Student',

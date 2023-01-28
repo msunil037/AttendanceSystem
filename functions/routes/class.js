@@ -1,11 +1,45 @@
 const express = require("express");
 const Class = require("../models/class");
+const Attendance = require("../models/attendance");
 const router = express.Router();
+
+
+router.get("/attendance/:date/:className", (req, res, next) => {
+  Attendance.find({date: req.params.date, className: req.params.className})
+    .then((attendanceRes) => {
+      if (attendanceRes) {
+        res.status(200).json(attendanceRes);
+      } else {
+        res.status(404).json({ message: "Data not found!" });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error!" });
+    });
+});
+router.post("/attendance", (req, res, next) => {
+  const attendance = new Attendance({
+    attendanceSheet: req.body.attendanceSheet,
+    className: req.body.className,
+    date: req.body.date
+  });
+  attendance
+    .save()
+    .then(() => {
+      res.status(201).json({
+        message: "Attendance taken successfully",
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error!" });
+    });
+});
 
 router.post("", (req, res, next) => {
   const classObj = new Class({
     className: req.body.className,
     sem: req.body.sem,
+    branch: req.body.branch,
     teacher: req.body.teacher,
     students: req.body.students,
   });
@@ -27,6 +61,7 @@ router.put("/:id", (req, res, next) => {
       _id: req.body.id,
       className: req.body.className,
       sem: req.body.sem,
+      branch: req.body.branch,
       teacher: req.body.teacher,
       students: req.body.students,
     });

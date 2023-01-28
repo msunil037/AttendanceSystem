@@ -12,7 +12,7 @@ const classRoutes = require("./routes/class");
 
 const app = express();
 
-const dbConnectionStr = "mongodb://localhost:27017/blog";
+const dbConnectionStr = "mongodb://localhost:27017/attendance-system";
 
 mongoose
   .connect(dbConnectionStr)

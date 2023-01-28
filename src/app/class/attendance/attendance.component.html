@@ -1,0 +1,70 @@
+<div class="container">
+  <div
+    class="d-flex align-items-center justify-content-center"
+    style="height: 90vh"
+  >
+    <div class="card" style="width: 40rem">
+      <ng-container *ngIf="currentStudent">
+        <div class="card-body" *ngIf="studentIndex !== studentsByClass.length">
+          <h5 class="card-title">{{ currentStudent.name }}</h5>
+          <div class="d-flex justify-content-between align-items-center m-4">
+            <div>
+              <img
+                src="../../../assets/images/placeholder-person.jpg"
+                style="height: 200px; width: 200px"
+              />
+            </div>
+            <div>
+              <h6>Branch : {{ currentStudent.branch }}</h6>
+              <h6>Semester : {{ currentStudent.sem }}</h6>
+              <h6>E-Mail : {{ currentStudent.email }}</h6>
+              <h6>contact : {{ currentStudent.phone }}</h6>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              class="btn btn-primary m-2 p-3"
+              (click)="takeAttendance('Present')"
+            >
+              Present
+            </button>
+            <button
+              class="btn btn-danger m-2 p-3"
+              (click)="takeAttendance('Absent')"
+            >
+              Absent
+            </button>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="card-body" *ngIf="studentIndex === studentsByClass.length">
+        <h5>Total Student: {{studentsByClass.length}}</h5>
+        <h5>Present Student: {{getAttendanceCount('Present')}}</h5>
+        <h5>Absent Student: {{getAttendanceCount('Absent')}}</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let attendance of attendanceSheet">
+              <td>{{ attendance.name }}</td>
+              <td>{{ attendance.attendanceStatus }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary m-2" (click) = "submitAttendance()">
+                Submit
+            </button>
+            <button class="btn btn-danger m-2" (click) = "reset()">
+                Reset
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
