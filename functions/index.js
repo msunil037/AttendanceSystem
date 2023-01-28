@@ -48,14 +48,14 @@ const onListening = () => {
   debug("Listening on " + bind);
 };
 
-// const port = normalizePort(process.env.PORT || "3000");
-// app.set("port", port);
+const port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
 
-// const server = http.createServer(app);
-// server.on("error", onError);
-// server.on("listening", onListening);
-// server.listen(port);
+const server = http.createServer(app);
+server.on("error", onError);
+server.on("listening", onListening);
+server.listen(port);
 
 // console.log(port);
 
-exports.attendanceSystem = functions.https.onRequest(app);
+// exports.attendanceSystem = functions.https.onRequest(app);
