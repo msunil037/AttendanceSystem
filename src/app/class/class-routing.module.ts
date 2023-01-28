@@ -15,7 +15,7 @@ const routes: Routes = [
     component: AddClassComponent
   },
   {
-    path:'edit-class',
+    path:'edit-class/:classId',
     component: EditClassComponent
   },
   {

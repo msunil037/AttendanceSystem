@@ -20,6 +20,10 @@ export class ListStudentComponent {
     })
   }
 
+  routeToStudent(id:string){
+    this._router.navigateByUrl("student/edit-student/" + id);
+  }
+
   deleteStudent(id:string){
     this._studentService.deleteStudent(id).subscribe((res:any) => {
       Swal.fire({

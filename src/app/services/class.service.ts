@@ -18,6 +18,9 @@ export class ClassService {
   addClass(classInfo: any){
     return this._http.post(environment.baseURL + 'class', classInfo);
   }
+  updateClass(id: string, classInfo: any) {
+    return this._http.put(environment.baseURL + 'class/' + id, classInfo);
+  }
   takeAttendance(attendanceDetails:any){
     return this._http.post(environment.baseURL + 'class/attendance', attendanceDetails);
   }

@@ -29,6 +29,9 @@ export class EditTeacherComponent {
       })
     })
   }
+  clear(form: NgForm){
+    form.reset();
+  }
   updateTeacher(form:NgForm){
     let teacherInfo = {...form.value};
     teacherInfo.id = this.teacherId;

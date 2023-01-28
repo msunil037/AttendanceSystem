@@ -27,6 +27,9 @@ export class ListClassComponent {
   routeToAttendance(id:string){
     this._router.navigateByUrl('class/attendance/' + id);
   }
+  routeToEditClass(id:string){
+    this._router.navigateByUrl('class/edit-class/' + id);
+  }
   ngOnInit(){
     if(localStorage.getItem('role') === 'teacher'){
       this.isTeacher = true;

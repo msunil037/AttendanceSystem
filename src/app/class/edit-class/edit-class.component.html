@@ -4,58 +4,107 @@
         <h5 class="card-title">Update Class</h5>
   
         <form #updateClassForm = "ngForm" (submit) = "updateClass(updateClassForm)">
-            <div class="row">
-              <div class="col-md-6">
-                <label for="className" class="form-label">Class Name*</label>
-                <input
-                  name="className"
-                  ngModel
-                  #className = "ngModel"
-                  type="text"
-                  class="form-control"
-                  placeholder=""
-                  required
-                />
-                <span *ngIf = "className.touched && className.invalid">Please Enter Class Name</span>
-              </div>
-              <div class="col-md-6">
-                <label for="semester" class="form-label">Semester*</label>
-                <select class="form-select" aria-label="Semester">
-                    <option selected value = "">Select a Semester</option>
-                    <option value="1">1st</option>
-                    <option value="2">2nd</option>
-                    <option value="3">3rd</option>
-                    <option value="4">4th</option>
-                    <option value="5">5th</option>
-                    <option value="6">6th</option>
-                    <option value="7">7th</option>
-                    <option value="8">8th</option>
-                  </select>
-              </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="className" class="form-label">Class Name*</label>
+              <input
+                name="className"
+                ngModel
+                #className="ngModel"
+                type="text"
+                class="form-control"
+                placeholder=""
+                required
+              />
+              <span class="text-danger" *ngIf="className.touched && className.invalid"
+                >Please Enter Class Name</span
+              >
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="teacher" class="form-label">Teacher*</label>
-                    <select class="form-select" aria-label="teacher">
-                        <option selected value = "">Select a Teacher</option>
-                        <option value="sunil@email.com">Sunil</option>
-                      </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="teacher" class="form-label">Students*</label>
-                    <select class="form-select" multiple aria-label="teacher">
-                        <option selected value = "">Select Students</option>
-                        <option value="amit@email.com">Amit</option>
-                        <option value="sangram@email.com">Sangram</option>
-                        <option value="alex@email.com">Alex</option>
-                      </select>
-                  </div>
+            <div class="col-md-6">
+              <label for="branch" class="form-label">Branch*</label>
+              <select
+                name="branch"
+                ngModel
+                #branch = "ngModel"
+                required
+                class="form-select"
+                aria-label="Branch"
+                (change)="onChange($event)"
+              >
+                <option selected value="">Select a Branch</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="CSE">CSE</option>
+              </select>
+              <span class="text-danger" *ngIf="branch.touched && branch.invalid">Please enter branch</span>
             </div>
-            <div class="d-flex justify-content-end">
-              <button class="btn btn-danger m-2">Clear</button>
-              <button class="btn btn-primary m-2">Update</button>
+            <div class="col-md-6">
+              <label for="semester" class="form-label">Semester*</label>
+              <select
+                name="sem"
+                ngModel
+                #sem = "ngModel"
+                required
+                class="form-select"
+                aria-label="Semester"
+              >
+                <option selected value="">Select a Semester</option>
+                <option value="1">1st</option>
+                <option value="2">2nd</option>
+                <option value="3">3rd</option>
+                <option value="4">4th</option>
+                <option value="5">5th</option>
+                <option value="6">6th</option>
+                <option value="7">7th</option>
+                <option value="8">8th</option>
+              </select>
+              <span class="text-danger" *ngIf="sem.touched && sem.invalid">Please enter semester</span>
             </div>
+            <div class="col-md-6">
+              <label for="teacher" class="form-label">Teacher*</label>
+              <select
+                name="teacher"
+                ngModel
+                #teacher = 'ngModel'
+                required
+                class="form-select"
+                aria-label="teacher"
+              >
+                <option selected value="">Select a Teacher</option>
+                <option
+                  *ngFor="let teacher of teachersOption"
+                  [value]="teacher.email"
+                >
+                  {{ teacher.name }}
+                </option>
+              </select>
+              <span class="text-danger" *ngIf="teacher.touched && teacher.invalid">Please enter teacher name</span>
+            </div>
+            <div class="col-md-6">
+              <label for="student" class="form-label">Students*</label>
+              <select
+                name="students"
+                ngModel
+                #students = "ngModel"
+                required
+                class="form-select"
+                multiple
+                aria-label="teacher"
+              >
+                <option selected value="">Select Students</option>
+                <option
+                  *ngFor="let student of studentOptionLocal"
+                  [value]="student.email"
+                >
+                  {{ student.name }}
+                </option>
+              </select>
+              <span class="text-danger" *ngIf = "students.touched && students.invalid">Please select students</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-danger m-2" (click)="clear(updateClassForm)">Clear</button>
+            <button class="btn btn-primary m-2">Submit</button>
+          </div>
         </form>
       </div>
     </div>

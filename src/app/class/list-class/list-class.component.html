@@ -21,7 +21,7 @@
               <td>{{ class.sem }}</td>
               <td>{{ class.teacherName }}</td>
               <td>
-                  <button class="btn btn-primary m-2">Edit</button>
+                  <button class="btn btn-primary m-2" (click)="routeToEditClass(class._id)">Edit</button>
                   <button class="btn btn-danger m-2">Delete</button>
                   <button class="btn btn-primary m-2" *ngIf = "isTeacher" (click) = "routeToAttendance(class._id)">Take Attendance</button>
               </td>

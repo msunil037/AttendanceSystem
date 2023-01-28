@@ -12,6 +12,9 @@ import Swal from 'sweetalert2'
 })
 export class AddTeacherComponent {
   constructor(private _teacherService: TeacherService, private _authService:AuthService){}
+  clear(form: NgForm){
+    form.reset();
+  }
   saveTeacher(form:NgForm){
     if(form.invalid){
       return

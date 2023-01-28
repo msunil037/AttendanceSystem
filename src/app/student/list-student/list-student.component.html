@@ -24,7 +24,7 @@
             <td>{{ student.sem }}</td>
             <td style="width: 15%">
               <div class="d-flex justify-content-around">
-                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-primary" (click)="routeToStudent(student._id)">Edit</button>
                 <button class="btn btn-danger" (click) = "deleteStudent(student._id)">Delete</button>
               </div>
             </td>

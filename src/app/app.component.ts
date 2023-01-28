@@ -15,18 +15,6 @@ export class AppComponent implements OnInit {
   }
   menu:any[] = [
     {
-      name:'report',
-      title: 'Report',
-      role: 'teacher',
-      subMenu: [
-        {
-          name: 'showAttendance',
-          title: "Show Attendance",
-          url : 'report'
-        }
-      ]
-    },
-    {
       name:'student',
       title: 'Student',
       subMenu: [
@@ -72,6 +60,18 @@ export class AppComponent implements OnInit {
           name: 'addClass',
           title: "Add Class",
           url : 'class/add-class'
+        }
+      ]
+    },
+    {
+      name:'report',
+      title: 'Report',
+      role: 'teacher',
+      subMenu: [
+        {
+          name: 'showAttendance',
+          title: "Show Attendance",
+          url : 'report'
         }
       ]
     }

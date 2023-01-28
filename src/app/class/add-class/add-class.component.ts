@@ -40,8 +40,12 @@ export class AddClassComponent {
       this.studentOptionLocal = [...this.studentsOption];
     });
   }
+  clear(form:NgForm){
+    form.reset();
+  }
   saveClass(form: NgForm) {
     console.log(JSON.stringify(form.value));
+    form.form.markAllAsTouched();
     this._classService.addClass(form.value).subscribe((classRes: any) => {
       Swal.fire({
         icon: 'success',

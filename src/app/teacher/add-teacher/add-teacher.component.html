@@ -10,22 +10,26 @@
             <input
               name="name"
               ngModel
+              #name = "ngModel"
               type="text"
               class="form-control"
               placeholder=""
               required
             />
+            <span *ngIf = "name.touched && name.invalid" class="text-danger">Please enter name</span>
           </div>
           <div class="col-md-6">
             <label for="email" class="form-label">Email*</label>
             <input
               name="email"
               ngModel
+              #email = "ngModel"
               type="email"
               class="form-control"
               placeholder=""
               required
             />
+            <span *ngIf = "email.touched && email.invalid" class="text-danger">Please enter email</span>
           </div>
         </div>
 
@@ -35,15 +39,17 @@
             <input
               name="phone"
               ngModel
+              #phone = "ngModel"
               type="text"
               class="form-control"
               placeholder=""
               required
             />
+            <span *ngIf = "phone.touched && phone.invalid" class="text-danger">Please enter phone</span>
           </div>
         </div>
         <div class="d-flex justify-content-end">
-          <button class="btn btn-danger m-2">Clear</button>
+          <button type="button" class="btn btn-danger m-2" (click)="clear(addTeacherForm)">Clear</button>
           <button class="btn btn-primary m-2">Submit</button>
         </div>
       </form>

@@ -10,8 +10,11 @@ import Swal from 'sweetalert2';
 })
 export class AddStudentComponent {
   constructor(private _studentService: StudentService){}
+  clear(form:NgForm){
+    form.reset()
+  }
   saveStudent(form:NgForm){
-    console.log(form.valid);
+    form.form.markAllAsTouched();
     this._studentService.saveStudent(form.value).subscribe((res: any) => {
       Swal.fire({
         icon: 'success',
