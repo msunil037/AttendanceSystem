@@ -25,7 +25,9 @@ export class ClassService {
     return this._http.post(environment.baseURL + 'class/attendance', attendanceDetails);
   }
   getAttendanceReportByDate(className:string, date:string){
-    console.log(date);
     return this._http.get(environment.baseURL + 'class/attendance/'+date + '/' + className);
+  }
+  deleteClass(id:string){
+    return this._http.delete(environment.baseURL + 'class/' + id)
   }
 }

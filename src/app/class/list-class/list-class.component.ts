@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClassService } from 'src/app/services/class.service';
 import { TeacherService } from 'src/app/services/teacher.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-class',
@@ -24,6 +25,17 @@ export class ListClassComponent {
       return "";
     }
   }
+  deleteClass(id:string){
+    this._classService.deleteClass(id).subscribe((classRes: any) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: classRes.message
+      }).then(_ => {
+        this.getClassesList();
+      })
+    })
+  }
   routeToAttendance(id:string){
     this._router.navigateByUrl('class/attendance/' + id);
   }
@@ -36,6 +48,9 @@ export class ListClassComponent {
     }else {
       this.isTeacher = false;
     }
+    this.getClassesList();
+  }
+  getClassesList(){
     this._classService.getClasses().subscribe((classesRes: any) => {
       this.classes = classesRes.classes;
       this._teacherService.getTeacher().subscribe((teacherRes:any) => {
@@ -45,7 +60,5 @@ export class ListClassComponent {
         })
       })
     })
-
-
   }
 }

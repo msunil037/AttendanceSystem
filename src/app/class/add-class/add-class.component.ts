@@ -51,6 +51,8 @@ export class AddClassComponent {
         icon: 'success',
         title: 'Success',
         text: classRes.message
+      }).then(_ => {
+        form.reset();
       })
     })
   }
